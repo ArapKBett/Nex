@@ -3,8 +3,6 @@ use std::fmt;
 use anyhow::{Result, anyhow};
 use std::sync::Mutex;
 
-// Traits RVType, Writable, Readable are assumed defined as above (or similarly)
-
 pub trait HoldableObject: RVType {
     fn object_id(&self) -> &dyn RVType;
     fn copy_ref(&self) -> Box<dyn HoldableObject>;
@@ -28,7 +26,7 @@ pub struct AnyObjectHolder {
 
 impl AnyObjectHolder {
     pub fn new() -> Self {
-        // Placeholder: You must replace DummyHoldableObject with your real default
+        // Placeholder
         Self { object: Box::new(DummyHoldableObject::new()) }
     }
 
@@ -122,7 +120,7 @@ impl fmt::Debug for DummyHoldableObject {
     }
 }
 
-// Helper function you need to implement to extract a string identifier from a Readable
+// Helper function 
 fn read_string_from_readable(_readable: &mut dyn Readable) -> Result<String> {
     // Example: read length prefix, then read UTF-8 string bytes and convert
     unimplemented!("Implement string reading from Readable trait");
